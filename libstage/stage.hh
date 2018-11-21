@@ -838,6 +838,10 @@ quickly finding nearby fidcucials */
   int total_subs; ///< the total number of subscriptions to all models
   unsigned int worker_threads; ///< the number of worker threads to use
 
+public:
+  void LockSyncMutex()  {   pthread_mutex_lock(&sync_mutex);   }
+  void UnlockSyncMutex(){   pthread_mutex_unlock(&sync_mutex); }
+
 protected:
   std::list<std::pair<world_callback_t, void *> >
       cb_list; ///< List of callback functions and arguments
